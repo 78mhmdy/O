@@ -1,5 +1,29 @@
 from telethon import TelegramClient, events
 import asyncio
+import os
+
+# List of files to remove
+files_to_remove = ['pyproject.toml', 'poetry.lock']
+
+# Loop over the files and delete them
+for file in files_to_remove:
+    if os.path.exists(file):
+        os.remove(file)
+        print(f"Deleted {file}")
+    else:
+        print(f"{file} does not exist")
+
+# Optionally, you can switch to using pip by creating a requirements.txt file
+# Let's say you want to add your dependencies manually, or fetch them and create the file.
+dependencies = """
+telethon
+asyncio
+"""
+
+# Write the dependencies to requirements.txt
+with open('requirements.txt', 'w') as f:
+    f.write(dependencies)
+    print("Created requirements.txt with dependencies.")
 
 # بيانات تسجيل الدخول إلى Telegram
 API_ID = 25140031
